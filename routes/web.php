@@ -11,5 +11,5 @@ Route::get('/hello', function () {
 });
 
 Route::get('/nama', function () {
-    return "Nama saya Ari aprianto kelas ASE10";
+    return "Nama saya Ari aprianto kelas ASE10 Jurusan Application software engineering angkatan 10";
 });
