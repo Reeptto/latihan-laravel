@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data mahasiswa</title>
+    <title>Data mata kuliah</title>
     <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
@@ -13,18 +13,18 @@
 
 <body>
     <center>
-        <h1>Tambah Mahasiswa</h1>
-        <form method="POST" action="/mahasiswa">
+        <h1>Tambah Mata kuliah</h1>
+        <form method="POST" action="/matkul">
             @csrf
             <input type="text" name="nama" placeholder="Nama" id=""><br><br>
-            <input type="text" name="nim" placeholder="Nim" id=""><br><br>
+            <input type="text" name="deskripsi" placeholder="Deskripsi" id=""><br><br>
             <button type="submit">Simpan</button>
         </form>
 
-        <h2>List Mahasiswa</h2>
+        <h2>List Mata kuliah</h2>
         <ul>
-            @foreach($data as $mhs)
-                <li> {{ $mhs->nama }} - {{ $mhs->nim }} </li>
+            @foreach($data as $matkul)
+                <li> {{ $matkul->nama }} - {{ $matkul->deskripsi }} </li>
             @endforeach
         </ul>
 </body>

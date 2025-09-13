@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use illuminate\Http\Request;
+use Illuminate\Http\Request;
 use App\Models\Mahasiswa;
 use Illuminate\Support\Facades\Redirect;
 
@@ -16,7 +16,8 @@ class MahasiswaController extends Controller
 
     public function store(Request $request) 
     {
+        dd($request->nim);
         Mahasiswa::create($request->only('nama','nim'));
-        return Redirect()->back();
+        return redirect()->back();
     }
 }

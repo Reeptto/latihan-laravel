@@ -13,18 +13,18 @@
 
 <body>
     <center>
-        <h1>Tambah Mahasiswa</h1>
-        <form method="POST" action="/mahasiswa">
+        <h1>Tambah Kelas</h1>
+        <form method="POST" action="/kelas">
             @csrf
             <input type="text" name="nama" placeholder="Nama" id=""><br><br>
-            <input type="text" name="nim" placeholder="Nim" id=""><br><br>
+            <input type="text" name="kapastas" placeholder="Kapasitas" id=""><br><br>
             <button type="submit">Simpan</button>
         </form>
 
-        <h2>List Mahasiswa</h2>
+        <h2>List Kelas</h2>
         <ul>
-            @foreach($data as $mhs)
-                <li> {{ $mhs->nama }} - {{ $mhs->nim }} </li>
+            @foreach($data as $kelas)
+                <li> {{ $kelas->nama }} - {{ $kelas->kapastas }} </li>
             @endforeach
         </ul>
 </body>
