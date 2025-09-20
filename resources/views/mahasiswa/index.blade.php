@@ -12,12 +12,11 @@
 </head>
 
 <body>
-    <center>
         <h1>Tambah Mahasiswa</h1>
         <form method="POST" action="/mahasiswa">
             @csrf
-            <input type="text" name="nama" placeholder="Nama" id=""><br><br>
-            <input type="text" name="nim" placeholder="Nim" id=""><br><br>
+            <input type="text" name="nama" placeholder="Nama" id=""><br>
+            <input type="text" name="nim" placeholder="Nim" id=""><br>
             <button type="submit">Simpan</button>
         </form>
 

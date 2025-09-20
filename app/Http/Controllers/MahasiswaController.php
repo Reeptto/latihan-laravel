@@ -16,8 +16,7 @@ class MahasiswaController extends Controller
 
     public function store(Request $request) 
     {
-        dd($request->nim);
         Mahasiswa::create($request->only('nama','nim'));
         return redirect()->back();
-    }
+    }       
 }
