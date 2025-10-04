@@ -15,16 +15,21 @@
                     <form method="POST" action="{{ route('mahasiswa.store') }}">
                         @csrf
                         <input type="text" name="nama" placeholder="Nama" id=""
-                        class="border-gray-300 rounded-md w-full"><br>
+                        class="border-gray-300 rounded-md w-full"><br><br>
                         <input type="text" name="nim" placeholder="NIM" id=""
-                        class="border-gray-300 rounded-md w-full"><br>
+                        class="border-gray-300 rounded-md w-full"><br><br>
+                        <select name="kelas_id" class="border-gray-300 rounded-md w-full" id="">
+                            <option value="">-- Pilih Kelas --</option>
+                            @foreach ($kelas as $kls)
+                                <option value="{{ $kls->id }}">{{ $kls->nama_kelas }}</option>
+                            @endforeach
+                        </select><br><br>
                         <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
                             Simpan
                         </button>
                     </form>
                 </div>
             </div>
-
 
             {{-- List mahasiswa --}}
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
@@ -36,15 +41,18 @@
                                 <th class="px-4 py-2 border">Id</th>
                                 <th class="px-4 py-2 border">Nama</th>
                                 <th class="px-4 py-2 border">NIM</th>
+                                <th class="px-4 py-2 border">Kelas</th>
                                 <th class="px-4 py-2 border">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
+
                             @foreach ($data as $mhs)
                                 <tr>
                                     <td class="border px-4 py-2 text-center"> {{ $loop->iteration }}</td>
                                     <td class="border px-4 py-2"> {{ $mhs->nama }}</td>
                                     <td class="border px-4 py-2"> {{ $mhs->nim }}</td>
+                                    <td class="border px-4 py-2"> {{ $mhs->Kelas->nama_kelas ?? '' }}</td>
                                     <td class="border px-4 py-2 text-center"> 
                                         <a href="{{ route('mahasiswa.edit', $mhs->id) }}" class="inline-block px-3 py-1 bg-yellow-500 text-white rounded">Edit</a>
                                         

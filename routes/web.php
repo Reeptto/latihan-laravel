@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\DosenController;
+// use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\MatkulController;
@@ -39,6 +40,9 @@ Route::middleware('auth')->group(function () {
     // Matkul
     Route::get('/matkul', [MatkulController::class, 'index'])->name('matkul.index');
     Route::post('/matkul', [MatkulController::class, 'store'])->name('matkul.store');
+
+
+   
 });
 
 require __DIR__.'/auth.php';
