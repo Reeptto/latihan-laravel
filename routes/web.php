@@ -1,11 +1,13 @@
 <?php
 use App\Http\Controllers\DosenController;
-// use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\MatkulController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\StudentRegisterController;
+use App\Http\Controllers\EkycController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -41,7 +43,19 @@ Route::middleware('auth')->group(function () {
     Route::get('/matkul', [MatkulController::class, 'index'])->name('matkul.index');
     Route::post('/matkul', [MatkulController::class, 'store'])->name('matkul.store');
 
+    // EKYC
+    Route::get('/register-mahasiswa', [StudentRegisterController::class, 'showRegistrationForm'])->name('register.mahasiswa');
+    Route::post('/register-mahasiswa', [StudentRegisterController::class, 'register']);
 
+    Route::middleware(['auth'])->prefix('ekyc')->group(function () { 
+        Route::get('step1', [EkycController::class, 'step1'])->name('ekyc.step1');
+        Route::post('step1', [EkycController::class, 'storeStep1'])->name('ekyc.storeStep1');
+
+        // Sementara redirect kosong untuk step2
+        Route::get('step2', function () {
+            return "step2: Upload dokumen (belum dibuat)";
+        })->name('ekyc.step2');
+    });
    
 });
 

@@ -15,7 +15,7 @@ class KelasController extends Controller
 
     public function store(Request $request) 
     {
-        Kelas::create($request->only('nama', 'kapastas'));
+        Kelas::create($request->only('nama', 'kapasta   s'));
         return redirect()->back();
     }
 }
