@@ -15,9 +15,10 @@ class EkycRegistration extends Model
         'nama',
         'tanggal_lahir',
         'alamat',
-        'no_hp',
-        'foto_ktp',
-        'selfie_ktp'
+        'file_ktp',
+        'file_kkk',
+        'file_ijazah',
+        'file_selfie',
     ];
 
     public function user()
