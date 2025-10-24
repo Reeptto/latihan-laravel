@@ -74,10 +74,12 @@ class EkycController extends Controller
 
         $ekyc->update($validated);
 
-        return back()->with('success', 'Data tersimpan');
+        // return back()->with('success', 'Data tersimpan');
+        return redirect()->route('ekyc.step3')->with('success', 'Step 2 tersimpan.');
+
     }
 
-    public function showStep3 ()
+    public function showStep3()
     {
         $data = \App\Models\EkycRegistration::where('user_id', auth()->id())->first();
         return view('ekyc.step3', compact('data'));
@@ -103,7 +105,7 @@ class EkycController extends Controller
             $data->file_kkk = $request->file('file_kkk')->store('ekyc', 'public');
         }
         if ($request->hasFile('file_ijazah')) {
-            $data->file_kkk = $request->file('file_ijazah')->store('ekyc', 'public');
+            $data->file_ijazah = $request->file('file_ijazah')->store('ekyc', 'public');
         }
 
         $data->save();

@@ -19,6 +19,9 @@ class EkycRegistration extends Model
         'file_kkk',
         'file_ijazah',
         'file_selfie',
+        'asal_sd',
+        'asal_smp',
+        'asal_sma',
     ];
 
     public function user()
