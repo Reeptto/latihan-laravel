@@ -22,6 +22,7 @@ class EkycRegistration extends Model
         'asal_sd',
         'asal_smp',
         'asal_sma',
+        
     ];
 
     public function user()
