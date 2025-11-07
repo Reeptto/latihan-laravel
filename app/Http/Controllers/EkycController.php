@@ -113,4 +113,3 @@ class EkycController extends Controller
         return redirect()->route('ekyc.step3')->with('success', 'Data pendidikan berhasil disimpan');
     }
 }
- 
