@@ -48,18 +48,24 @@ Route::middleware('auth')->group(function () {
     Route::post('/register-mahasiswa', [StudentRegisterController::class, 'register']);
 
     Route::middleware(['auth'])->prefix('ekyc')->group(function () { 
+        // Step 1
         Route::get('step1', [EkycController::class, 'step1'])->name('ekyc.step1');
         Route::post('step1', [EkycController::class, 'storeStep1'])->name('ekyc.storeStep1');
 
-        // Sementara redirect kosong untuk step2
+        // Step 2
         Route::get('/ekyc/step2', [EkycController::class, 'step2'])->name('ekyc.step2');
         Route::post('/ekyc/step2', [EkycController::class, 'storeStep2'])->name('ekyc.step2.store');
 
+        // Step 3
         Route::get('/ekyc/step3', [EkycController::class, 'showStep3'])->name('ekyc.step3');
         Route::post('/ekyc/step3', [EkycController::class, 'storeStep3'])->name('ekyc.step3.store');
 
+        // Step 4
         Route::get('/ekyc/step4', [EkycController::class, 'step4'])->name('ekyc.step4');
         Route::post('/ekyc/step4', [EkycController::class, 'storeStep4'])->name('ekyc.step4.store');
+
+        // Ending EKYC
+        Route::get('/ekyc/step5', [EkycController::class, 'step5'])->name('ekyc.step5');
     });
    
 });

@@ -42,9 +42,15 @@
                     <img src="{{ asset('storage/'. $data->file_selfie) }}" class="h-32 rounded mt-2 border" alt="">
                 @endif
             </div>
-            <div>
-                <a href="{{ route('ekyc.step1') }}" class="text-sm text-gray-500 hover:text-gray-700">Kembali ke Step 1</a>
-                <button type="submit" class="px-4 py-2 bg-blue-600 text-white hover:bg-blue-700">Simpan & lanjut ke Step 3 </button>
+            <div class="flex justify-between items-center mt-4">
+                @if ($data && $data->status === 'submitted')
+                     <a href="{{ route('ekyc.step3') }}" class="text-sm text-gray-100 bg-green-600 px-4 py-2 rounded hover:text-gray-100">Next</a>
+                     <a href="{{ route('ekyc.step1') }}" class="text-sm text-gray-800 px-4 py-2 rounded hover:text-gray-700">Kembali Ke Step 1</a>
+                @else 
+                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Simpan & Lanjut Step 3</button>
+                     <a href="{{ route('ekyc.step1') }}" class="text-sm text-gray-800 px-4 py-2 rounded hover:text-gray-700">Kembali Ke Step 1</a>
+
+                @endif
             </div>
         </form>
     </div>

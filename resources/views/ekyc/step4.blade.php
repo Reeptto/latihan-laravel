@@ -73,7 +73,7 @@
         </div>
 
         <div class="mb-4">
-            <label for="" class="block text-sm font-medium mb-1">Provinsi</label>
+            <label for="" class="block text-sm font-medium mb-1">Sumber Referensi</label>
             <select name="sumber" class="border-gray-300 rounded-md w-full" id="">
                 <option value="">-- Pilih Sumber --</option>
                 <option value="Sosial Media"{{ old('sumber', $data->sumber) == 'Sosial Media' ? 'selected' : '' }}>Sosial Media</option>
@@ -84,9 +84,15 @@
 
 
         <div class="flex justify-between items-center mt-4">
-                <a href="{{ route('ekyc.step3') }}" class="text-sm text-gray-500 hover:text-gray-700">Kembali ke Step 3</a>
-                <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Simpan & Lanjut Step 5</button>
-            </div>
+                @if ($data && $data->status === 'submitted')
+                     <a href="{{ route('ekyc.step5') }}" class="text-sm text-gray-100 bg-green-600 px-4 py-2 rounded hover:text-gray-700">Next</a>
+                     <a href="{{ route('ekyc.step3') }}" class="text-sm text-gray-800 px-4 py-2 rounded hover:text-gray-700">Kembali Ke Step 3</a>
+                    @else 
+                        <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Simpan & Lanjut Step 5</button>
+                        <a href="{{ route('ekyc.step3') }}" class="text-sm text-gray-800 px-4 py-2 rounded hover:text-gray-700">Kembali Ke Step 3</a>
+
+                    @endif
+        </div>
     </form>    
     </div>
 
@@ -99,9 +105,10 @@
             const kotaSelect = document.getElementById('kota');
             kotaSelect.innerHTML = `<option value="">-- Pilih Kota --</option>`;
 
-            const filteredKota = alamatData.filter(item => item.provinsi === prov);
-            filteredKota.forEach(item => {
-                kotaSelect.innerHTML += `<option value="${item.kota}">${item.kota}</option>`;
+            const filteredKota = alamatData.filter(item => item.provinsi === prov).map(item => item.kota);
+            const unik = [...new Set(filteredKota)];
+            unik.forEach(item => {
+                kotaSelect.innerHTML += `<option value="${item}">${item}</option>`;
             });
         });
 

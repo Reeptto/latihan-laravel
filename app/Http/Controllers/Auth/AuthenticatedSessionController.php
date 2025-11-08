@@ -33,7 +33,16 @@ class AuthenticatedSessionController extends Controller
             return redirect()->route('dashboard');
         }
 
-        return redirect()->intended(route('ekyc.step1', absolute: false));
+        // Ambil data ekyc milik user yang login
+        $ekyc = \App\Models\EkycRegistration::where('user_id', auth()->id())->first();
+
+        if ($ekyc && $ekyc->status === 'submitted') {
+            // Jika ekyc sudah selesai
+            return redirect() ->route('ekyc.step5');
+        }else {
+            return redirect()->route('ekyc.step1');
+        }
+
     }
 
     /**

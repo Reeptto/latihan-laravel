@@ -49,6 +49,14 @@ class MasterAlamatSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'provinsi' => 'DKI Jakarta',
+                'kota' => 'Jakarta Pusat',
+                'kecamatan' => 'Gambir',
+                'kode_pos' => '432314',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
                 'provinsi' => 'Yogyakarta',
                 'kota' => 'Sleman',
                 'kecamatan' => 'Gunungkidul',
