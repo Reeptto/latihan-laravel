@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\StudentRegisterController;
 use App\Http\Controllers\EkycController;
+use App\Http\Controllers\Admin\EkycAdminController;
 
 
 Route::get('/', function () {
@@ -42,6 +43,13 @@ Route::middleware('auth')->group(function () {
     // Matkul
     Route::get('/matkul', [MatkulController::class, 'index'])->name('matkul.index');
     Route::post('/matkul', [MatkulController::class, 'store'])->name('matkul.store');
+
+    Route::prefix('admin')->group(function () {
+        Route::get('/ekyc', [EkycAdminController::class, 'index'])->name('admin.ekyc.index');
+        Route::get('/ekyc/{id}', [EkycAdminController::class, 'show'])->name('admin.ekyc.show');
+        Route::post('/ekyc/{id}/verify', [EkycAdminController::class, 'verify'])->name('admin.ekyc.verify');
+    });
+
 
     // EKYC
     Route::get('/register-mahasiswa', [StudentRegisterController::class, 'showRegistrationForm'])->name('register.mahasiswa');
