@@ -186,6 +186,15 @@ class EkycController extends Controller
 
         return view('ekyc.step5', compact('data'));
     }
-    
 
+    public function accepted () 
+    {
+        return view('ekyc.accepted');
+    }
+
+
+    public function rejected () 
+    {
+        return view('ekyc.rejected');
+    }
 }

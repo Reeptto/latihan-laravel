@@ -26,9 +26,8 @@
                     <td class="border p-2">{{ $row->user->name ?? ''}}</td>
                     <td class="border p-2">{{ $row->nik ?? '-' }}</td>
                     <td class="border p-2">
-                        <span class="px-2 py-1 rounded text-white">
-                            {{ $row->status == 'ekyc_selesai' ? 'bg-green-500' : ($row->status == 'ekyc_ditolak' ? 'bg-red-500' : 'bg-yellow-500') }}
-                            {{ ucfirst(str_replace('_', ' ', $row->status ?? 'belum')) }}
+                        <span class="px-2 py-1 rounded text-white  {{ $row->status == 'accepted' ? 'bg-green-500' : ($row->status == 'rejected' ? 'bg-red-500' : 'bg-yellow-500') }}">
+                            {{ ucfirst(str_replace('_', ' ', $row->status ?? 'belum')) }}    
                         </span>
                     </td>
                     <td class="border p-2">{{ $row->updated_at->format('d M Y H:i') }}</td>

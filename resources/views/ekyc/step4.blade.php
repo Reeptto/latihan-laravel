@@ -22,7 +22,7 @@
 
         <div class="mb-4">
             <label for="" class="block text-sm font-medium mb-1">Alamat Domisili</label>
-            <textarea name="domisili" class="w-full rounded" id="">{{ old('domisili', $data->alamatDomisili) }}</textarea>
+            <textarea name="domisili" class="w-full rounded" id="">{{ old('domisili', $data->domisili) }}</textarea>
         </div>
 
         <div class="mb-4">
