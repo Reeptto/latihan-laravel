@@ -25,9 +25,9 @@
                     <td class="border p-2">{{ $i + 1 }}</td>
                     <td class="border p-2">{{ $row->user->name ?? ''}}</td>
                     <td class="border p-2">{{ $row->nik ?? '-' }}</td>
-                    <td class="border p-2">
-                        <span class="px-2 py-1 rounded text-white"  {{ $row->status == 'submitted' ? 'bg-green-500' : ($row->status == 'ekyc_ditolak' ? 'bg-red-500' : 'bg-yellow-500') }}>
-                           
+                    <td class="border p-2 text-center">
+                        {{-- Bagian yang diperbaiki --}}
+                        <span class="px-2 py-1 rounded text-white {{ $row->status == 'submitted' ? 'bg-green-500' : ($row->status == 'ekyc_ditolak' ? 'bg-red-500' : 'bg-yellow-500') }}">
                             {{ ucfirst(str_replace('_', ' ', $row->status ?? 'belum')) }}
                         </span>
                     </td>

@@ -8,11 +8,19 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\StudentRegisterController;
 use App\Http\Controllers\EkycController;
 use App\Http\Controllers\Admin\EkycAdminController;
+use App\Http\Controllers\LandingController;
+
+use App\Http\Controllers\Admin\LandingSettingController;
+use App\Http\Controllers\Admin\LandingNavController;
+use App\Http\Controllers\Admin\LandingProgramController;
+use App\Http\Controllers\Admin\LandingFooterController;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [LandingController::class, 'index'])->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -50,6 +58,19 @@ Route::middleware('auth')->group(function () {
         Route::post('/ekyc/{id}/verify', [EkycAdminController::class, 'verify'])->name('admin.ekyc.verify');
     });
 
+    /**
+     * LANDING PAGE CMS
+     */
+
+    Route::prefix('admin/landing')->name('admin.landing.')->group(function () {
+        Route::resource('settings', LandingSettingController::class)->only(['index', 'edit', 'update']);
+        Route::resource('navigation', LandingNavController::class)->except(['show']);
+        Route::resource('programs', LandingNavController::class)->except(['show']);
+        Route::resource('footer', LandingFooterController::class)->except(['show']);
+        Route::post('footer/reorder', [LandingFooterController::class, 'reorder'])->name('admin.landing.footer.reorder');
+        Route::patch('footer/{id}/status', [LandingFooterController::class, 'toggleStatus'])->name('admin.landing.footer.toggle.status');
+    });
+
 
     // EKYC
     Route::get('/register-mahasiswa', [StudentRegisterController::class, 'showRegistrationForm'])->name('register.mahasiswa');
@@ -74,6 +95,13 @@ Route::middleware('auth')->group(function () {
 
         // Ending EKYC
         Route::get('/ekyc/step5', [EkycController::class, 'step5'])->name('ekyc.step5');
+
+        // Rejected EKYC
+        Route::get('/rejected', [EkycController::class, 'rejected'])->name('ekyc.rejected');
+
+        // Accepted EKYC
+        Route::get('/accepted', [EkycController::class, 'accepted'])->name('ekyc.accepted');
+
     });
    
 });

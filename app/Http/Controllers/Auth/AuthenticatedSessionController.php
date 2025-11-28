@@ -39,8 +39,13 @@ class AuthenticatedSessionController extends Controller
         if ($ekyc && $ekyc->status === 'submitted') {
             // Jika ekyc sudah selesai
             return redirect() ->route('ekyc.step5');
+        }elseif($ekyc && $ekyc->status === 'accepted'){
+            return redirect()->route('ekyc.accepted');
+        }elseif($ekyc && $ekyc->status === 'rejected') {
+            return redirect()->route('ekyc.rejected');
         }else {
             return redirect()->route('ekyc.step1');
+            
         }
 
     }
