@@ -33,7 +33,7 @@ class LandingFooterController extends Controller
         $request->validate([
             'label' => 'required|string|max:100',
             'url' => 'nullable|string|max:255', // PDF says 'url' validation rule, changed to string/url
-            'status' => 'required|boolean',
+            'status' => 'required|string',
         ]);
 
         // Auto increment position
@@ -55,7 +55,7 @@ class LandingFooterController extends Controller
      */
     public function edit($id)
     {
-        $footer = LandingFooterLink::findOrFail($id);
+        $footer = LandingFooterLink::findOrFail(id: $id);
         return view('admin.landing.footer.edit', compact('footer'));
     }
 
@@ -67,7 +67,7 @@ class LandingFooterController extends Controller
         $request->validate([
             'label' => 'required|string|max:100',
             'url' => 'nullable|string|max:255',
-            'status' => 'required|boolean',
+            'status' => 'required|string',
         ]);
 
         $footer = LandingFooterLink::findOrFail($id);

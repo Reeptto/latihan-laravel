@@ -96,15 +96,10 @@ Route::middleware('auth')->group(function () {
         // Ending EKYC
         Route::get('/ekyc/step5', [EkycController::class, 'step5'])->name('ekyc.step5');
 
-<<<<<<< HEAD
-        Route::get('/rejected', [EkycController::class, 'rejected'])->name('ekyc.rejected');
-
-=======
         // Rejected EKYC
         Route::get('/rejected', [EkycController::class, 'rejected'])->name('ekyc.rejected');
 
         // Accepted EKYC
->>>>>>> 3287f6d30efb566eb689d3b1a46e6fa37eab0505
         Route::get('/accepted', [EkycController::class, 'accepted'])->name('ekyc.accepted');
 
     });
