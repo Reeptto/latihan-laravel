@@ -70,6 +70,7 @@
          <!-- konten : banner wording -->
             <div>
                 <h2 class="text-4xl md:text-5xl font-extrabold leading-tight text-gray-900 mb-6">
+<<<<<<< HEAD
                     Kampus Vokasi Terbaik<br />untuk Masa Depan Karier Anda
                 </h2>
                 <p class="text-lg text-gray-600 mb-8">
@@ -93,12 +94,50 @@
                 @endif
                     <a href="#program" class="px-6 py-3 border border-blue-600 text-blue-600 rounded-lg font-semibold text-lg hover:bg-blue-50">Lihat Program</a>
                 </div>
+=======
+                    {{ $landing['hero_subtitle'] ?? 'Kampus Vokasi Terbaik<br />untuk Masa Depan Karier Anda' }}
+                </h2>
+                <p class="text-lg text-gray-600 mb-8">
+                    {{ !! $landing['hero_subtitle'] ?? 'Solusi Pendidikan Masa Depan' }}
+                </p>
+                <div class="flex gap-4 items-center">
+                    <nav class="flex items-center gap-4">
+                        @auth
+                            <a href="{{ url('/dashboard') }}" 
+                            class="px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 text-lg">
+                                Dashboard
+                            </a>
+                        @endauth
+
+                        @guest
+                            <a href="{{ route('login') }}" class="px-4 py-2 text-blue-600 font-semibold">Login</a>
+
+                            @if(Route::has('register'))
+                                <a href="{{ route('register') }}" 
+                                class="px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700">
+                                    Register
+                                </a>
+                            @endif
+                        @endguest
+                    </nav>
+
+                    <a href="#program" 
+                    class="px-6 py-3 border border-blue-600 text-blue-600 rounded-lg font-semibold text-lg hover:bg-blue-50">
+                        Lihat Program
+                    </a>
+                </div>
+
+>>>>>>> 3287f6d30efb566eb689d3b1a46e6fa37eab0505
             </div>
 
             <!-- image -->
             <div class="flex justify-center">
                 <!-- konten banner image -->
+<<<<<<< HEAD
                 <img src="https://www.lp3i.ac.id/wp-content/uploads/2022/06/institusi-1.png" alt="Mahasiswa LP3I" class="w-full max-w-md rounded-lg object-cover drop-shadow-xl" />
+=======
+                <img src="{{ asset('/uploads/'. ($landing['hero_image'] ?? 'default-hero.png')) }}" alt="Mahasiswa LP3I" class="w-full max-w-md rounded-lg object-cover drop-shadow-xl" />
+>>>>>>> 3287f6d30efb566eb689d3b1a46e6fa37eab0505
             </div>
         </div>
     </section>
@@ -109,6 +148,7 @@
         <div class="max-w-7xl mx-auto px-4 text-center">
             <h3 class="text-3xl font-bold text-gray-900 mb-10">Program Pendidikan</h3>
             <div class="grid md:grid-cols-3 gap-8">
+<<<<<<< HEAD
                 <div class="bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-lg transition">
                     <img src="https://www.lp3i.ac.id/wp-content/uploads/2025/06/jurusan-teknologi-informasi-belajar-apa-1536x1025.webp" class="w-full rounded-lg" alt="">
                     <h4 class="text-xl font-semibold mb-3">Administrasi Bisnis</h4>
@@ -124,6 +164,14 @@
                     <h4 class="text-xl font-semibold mb-3">Digital Marketing</h4>
                     <p class="text-gray-600">Menguasai strategi pemasaran digital sesuai kebutuhan industri.</p>
                 </div>
+=======
+                @foreach ($programs as $program)
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-lg transition">
+                        <h4 class="text-xl font-semibold mb-3">{{ $program->name }}</h4>
+                        <p class="text-gray-600">{{$program->description }}</p>
+                    </div>
+                @endforeach
+>>>>>>> 3287f6d30efb566eb689d3b1a46e6fa37eab0505
             </div>
         </div>
     </section>
@@ -173,7 +221,11 @@
             </div>
         </div>
         <div class="text-center text-gray-200 mt-10 text-sm">
+<<<<<<< HEAD
             © 2025 LP3I. Semua Hak Dilindungi.
+=======
+           {{ $landing['footer_text'] ?? ' © 2025 LP3I College. All Rights Reserved.' }}
+>>>>>>> 3287f6d30efb566eb689d3b1a46e6fa37eab0505
         </div>
     </footer>
 </body>
