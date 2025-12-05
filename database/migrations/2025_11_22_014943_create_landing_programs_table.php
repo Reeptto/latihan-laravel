@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->string('icon')->nullable()->comment('opsional: nama file/icon class atau url');
+            $table->string('image')->nullable();
             $table->integer('position')->default(0)->index();
             $table->boolean('status')->default(true)->index();
             $table->timestamps();

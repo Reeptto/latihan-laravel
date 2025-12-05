@@ -18,12 +18,11 @@
             </a>
             <!-- konten navbar -->
             <nav class="hidden md:flex gap-8 text-gray-700 font-medium">
-                <ul id="menu" class="hidden md:flex flex-col md:flex-row gap-5">
-                    <a href="#beranda" class="hover:text-blue-600">Beranda</a>
-                    <a href="#program" class="hover:text-blue-600">Program</a>
-                    <a href="#tentang" class="hover:text-blue-600">Tentang</a>
-                    <a href="#kontak" class="hover:text-blue-600">Kontak</a>
-                </ul>
+                @foreach ($navigation as $navi)
+                    <a href="{{ $navi->url }}" class="hover:text-blue-600">
+                        {{ $navi->label }}
+                    </a>
+                @endforeach
             </nav>
 
             <button id="menu-toggle" class="block md:hidden focus:outline-none transition-delay-200ms">
@@ -73,7 +72,7 @@
                     {{ $landing['hero_title'] ?? 'Kampus Vokasi Terbaik <br />untuk Masa Depan Karier Anda' }}
                 </h2>
                 <p class="text-lg text-gray-600 mb-8">
-                    {{ $landing['hero_subtitle'] ? 'Solusi Pendidikan Masa Depan' : ''}}
+                    {{ $landing['hero_subtitle'] ?? 'Solusi Pendidikan Masa Depan'}}
                 </p>
                 <div class="flex gap-4 items-center">
                     <nav class="flex items-center gap-4">
@@ -108,7 +107,7 @@
             <!-- image -->
             <div class="flex justify-center">
                 <!-- konten banner image -->
-                <img src="{{ asset('/uploads/img/'. ($landing['hero_image'] ?? 'hero-lp3i.jpeg')) }}" alt="Mahasiswa LP3I" class="w-full max-w-md rounded-lg object-cover drop-shadow-xl" />
+                <img src="{{ asset('storage/'. ($landing['hero_image'] ?? '')) }}" alt="Mahasiswa LP3I" class="w-full max-w-md rounded-lg object-cover drop-shadow-xl" />
             </div>
         </div>
     </section>

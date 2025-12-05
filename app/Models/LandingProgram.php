@@ -12,9 +12,11 @@ class LandingProgram extends Model
     protected $table = 'landing_programs';
 
     protected $fillable = [
-        'title  ',
+        'title',
         'description',
         'icon',
+        'image',
+        'position',
         'status'
     ];
 

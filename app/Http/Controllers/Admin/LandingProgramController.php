@@ -24,7 +24,8 @@ class LandingProgramController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'position' => 'required|integer',
-            'image' => 'nullable|image|max:2048',
+            'status' => 'required|boolean',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $data = $request->all();
@@ -47,14 +48,15 @@ class LandingProgramController extends Controller
 
     public function update(Request $request, $id)
     {
-        $program = LandingProgram::findOrFail($id);
-
+        
         $request->validate([
             'title' => 'required|string|max:255',
             'position' => 'required|integer',
+            'status' => 'required|boolean',
             'image' => 'nullable|image|max:2048',
         ]);
 
+        $program = LandingProgram::findOrFail($id);
         $data = $request->all();
 
         if ($request->hasFile('image')) {

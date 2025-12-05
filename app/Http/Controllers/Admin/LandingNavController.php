@@ -10,7 +10,7 @@ class LandingNavController extends Controller
 {
     public function index()
     {
-        $items = LandingNavLink::orderBy('order')->get();
+        $items = LandingNavLink::orderBy('position')->get();
         return view('admin.landing.nav.index', compact('items'));
     }
 
@@ -24,7 +24,7 @@ class LandingNavController extends Controller
         $request->validate([
             'label' => 'required|string|max:100',
             'url' => 'required|string',
-            'order' => 'required|integer',
+            'position' => 'required|integer',
         ]);
 
         LandingNavLink::create($request->all());
