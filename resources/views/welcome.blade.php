@@ -40,8 +40,8 @@
                         </a>
                         @else
                             <a href="{{ route('login') }}" class="px-4 py-2 text-blue-600 font-semibold">Login</a>
-                            @if (Route::has('register'))
-                                <a href="{{ route('register.mahasiswa') }}" class="px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700">Register</a>
+                            @if (Route::has('register.mahasiswa'))
+                                <a href="{{ route('register') }}" class="px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700">Register</a>
                             @endif
                         @endauth
                     </nav>
@@ -84,10 +84,10 @@
                         @endauth
 
                         @guest
-                            <a href="{{ route('login') }}" c
-                            lass="px-4 py-2 text-blue-600 font-semibold">Login</a>
+                            <a href="{{ route('login') }}" 
+                            class="px-4 py-2 text-blue-600 font-semibold">Login</a>
 
-                            @if(Route::has('register'))
+                            @if(Route::has('register.mahasiswa'))
                                 <a href="{{ route('register') }}" 
                                 class="px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700">
                                     Register
@@ -107,7 +107,7 @@
             <!-- image -->
             <div class="flex justify-center">
                 <!-- konten banner image -->
-                <img src="{{ asset('storage/'. ($landing['hero_image'] ?? '')) }}" alt="Mahasiswa LP3I" class="w-full max-w-md rounded-lg object-cover drop-shadow-xl" />
+                <img src="{{ asset('storage/landing/'. ($landing['hero_image'] ?? '')) }}" alt="Mahasiswa LP3I" class="w-full max-w-md rounded-lg object-cover drop-shadow-xl" />
             </div>
         </div>
     </section>
@@ -142,28 +142,26 @@
     <section id="tentang" class="py-20 bg-gray-50">
         <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
             <div>
-                <h3 class="text-3xl font-bold text-gray-900 mb-6">Tentang LP3I</h3>
+                
+                <h3 class="text-3xl font-bold text-gray-900 mb-6">
+                    {{ $tentang['title'] }}
+                </h3>
                 <p class="text-gray-600 leading-relaxed mb-4">
-                    LP3I adalah lembaga pendidikan vokasi yang telah berdiri lebih dari 30 tahun,
-                    berfokus pada pendidikan yang langsung terhubung dengan dunia kerja.
-                </p>
-                <p class="text-gray-600 leading-relaxed">
-                    Dengan kurikulum berbasis industri, dosen praktisi, dan jaringan perusahaan luas,
-                    LP3I telah membantu ribuan lulusan untuk siap bekerja sejak semester awal.
+                    {{ $tentang['description'] }}
                 </p>
             </div>
             <div>
-                <img src="https://www.lp3i.ac.id/wp-content/uploads/2022/12/IMG_9468-scaled-e1670316395616.jpg" class="rounded-xl shadow-lg"/>
+                <img src="{{ asset('storage/landing/'. $tentang['image']) }}" class="rounded-xl shadow-lg"/>
             </div>
         </div>
     </section>
 
+
+
+
     <!-- FOOTER -->
     <!-- konten : footer -->
     <footer id="kontak" class="bg-blue-600 text-white py-10">
-        
-        
-
         <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-10">
             <div>
                 <h4 class="text-xl font-semibold mb-3">LP3I</h4>

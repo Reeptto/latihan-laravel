@@ -92,6 +92,12 @@
                                     Footer
                                 </a>
 
+                                <a href="{{ route('admin.landing.tentang.index') }}"
+                                class="block px-4 py-2 hover:bg-gray-200 rounded 
+                                {{ request()->routeIs('admin.landing.tentang.*') ? 'bg-gray-200 font-semibold' : '' }}">
+                                    Tentang
+                                </a>
+
                             </div>
                         </div>
                         @endif

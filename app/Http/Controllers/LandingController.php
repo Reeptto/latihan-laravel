@@ -7,6 +7,7 @@ use App\Models\LandingSetting;
 use App\Models\LandingProgram;
 use App\Models\LandingNavLink; 
 use App\Models\LandingFooterLink;
+use App\Models\LandingTentang;
 use Illuminate\Support\Facades\Cache;
 
 class LandingController extends Controller
@@ -32,6 +33,10 @@ class LandingController extends Controller
                 ->get();
         });
 
+        $tentang = Cache::remember('landing_tentang', 60, function () {
+            return LandingTentang::pluck('value', 'key')->toArray();
+        });
+
         $footer = Cache::remember('landing_footer', 60, function () {
             return LandingFooterLink::where('status', 1)
                 ->orderBy('position')
@@ -39,6 +44,6 @@ class LandingController extends Controller
         });
 
         // Kirim semua data ke view 'welcome'
-        return view('welcome', compact('landing', 'programs', 'navigation', 'footer'));
+        return view('welcome', compact('landing', 'programs', 'navigation', 'footer', 'tentang'));
     }
 }

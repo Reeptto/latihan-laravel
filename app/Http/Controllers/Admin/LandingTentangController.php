@@ -3,38 +3,38 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\LandingSetting;
+use App\Models\LandingTentang;
 use Illuminate\Http\Request;
 
-class LandingSettingController extends Controller
+class LandingTentangController extends Controller
 {
     public function index()
     {
-        $settings = LandingSetting::orderBy('key')->get();
-        return view('admin.landing.settings.index', compact('settings'));
+        $tentang = LandingTentang::orderBy('key')->get();
+        return view('admin.landing.tentang.index', compact('tentang'));
     }
 
     public function edit($id)
     {
-        $setting = LandingSetting::findOrFail($id);
-        return view('admin.landing.settings.edit', compact('setting'));
+        $tentang = LandingTentang::findOrFail($id);
+        return view('admin.landing.tentang.edit', compact('tentang'));
     }
 
     public function update(Request $request, $id)
     {
-        $setting = LandingSetting::findOrFail($id);
+        $tentang = LandingTentang::findOrFail($id);
 
-        if ($setting->type === 'image') {
+        if ($tentang->type === 'image') {
             $request->validate(['value' => 'image|mimes:jpg,png,webp,svg|max:2048']);
             $path = $request->file('value')->store('landing', 'public');
-            $setting->value = $path;
+            $tentang->value = $path;
         } else {
             $request->validate(['value' => 'required']);
-            $setting->value = $request->value;
+            $tentang->value = $request->value;
         }
 
-        $setting->save();
-        return redirect()->route('admin.landing.settings.index')->with('success', 'Setting updated successfully');
+        $tentang->save();
+        return redirect()->route('admin.landing.tentang.index')->with('success', 'tentang updated successfully');
     }
 
     public function store(Request $request)
@@ -46,6 +46,7 @@ class LandingSettingController extends Controller
             'status' => 'required|boolean'
         ]);
 
+
         $value = $request->value;
 
         // Jika type = image, handle upload
@@ -53,15 +54,15 @@ class LandingSettingController extends Controller
             $value = $request->file('value')->store('landing', 'public');
         }
 
-        LandingSetting::create([
+        LandingTentang::create([
             'key'    => $request->key,
             'value'  => $value,
             'type'   => $request->type,
             'status' => $request->status,
         ]);
 
-        return redirect()->route('admin.landing.settings.index')
-            ->with('success', 'Setting created successfully');
+        return redirect()->route('admin.landing.tentang.index')
+            ->with('success', 'tentang created successfully');
     }
 
 }

@@ -42,7 +42,7 @@
                         <tbody>
                             @foreach($programs as $program)
                                 <tr class="border-t">
-                                    {{-- Gambar --}}
+                                    {{-- Gambar --}} 
                                     <td class="px-4 py-2 text-center">
                                         @if($program->image)
                                             <img src="{{ asset('storage/' . $program->image) }}" class="h-12 mx-auto rounded shadow" alt="Program Image">
